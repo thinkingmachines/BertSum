@@ -301,10 +301,10 @@ class Trainer(object):
         return stats
         
     def test_api(self, test_iter, step, top_n_sentences=3, cal_lead=False, cal_oracle=False):
-        """ Validate model.
-            valid_iter: validate data iterator
+        """ Test model.
+            test_iter: test data iterator
         Returns:
-            :obj:`nmt.Statistics`: validation loss statistics
+            results: dictionary containing source articles and predicted summaries
         """
         # Set model in validating mode.
         def _get_ngrams(n, text):
@@ -382,7 +382,7 @@ class Trainer(object):
     
     def example_api(self, example, step, top_n_sentences=3, device='cpu', cal_lead=False, cal_oracle=False):
         """ 
-        Runs inference on a single test example. Designed for API deployemnt.
+        Runs end to end inference on a single test example. Designed for API deployment.
         """
         # Set model in validating mode.
         def _get_ngrams(n, text):
